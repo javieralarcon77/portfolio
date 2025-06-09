@@ -1,0 +1,49 @@
+---
+import github from "../../public/svg/github.svg?raw";
+import linkedin from "../../public/svg/linkedin.svg?raw";
+import gmail from "../../public/svg/gmail.svg?raw";
+import filepdf from "../../public/svg/file-type-pdf.svg?raw";
+
+const links = [
+  {
+    href: "https://github.com/javieralarcon77",
+    icon: github,
+    ariaLabel: "GitHub",
+  },
+  {
+    href: "https://www.linkedin.com/in/javier-alarcon-fullstack-developer/",
+    icon: linkedin,
+    ariaLabel: "LinkedIn",
+  },
+  {
+    href: "https://mail.google.com/mail/?view=cm&fs=1&to=alarcon.vt@gmail.com&su=Hey%20Javier!",
+    icon: gmail,
+    ariaLabel: "Email",
+  },
+  {
+    href: "https://javieralarcon77.github.io/curriculumvitae/",
+    icon: filepdf,
+    ariaLabel: "Curriculum Vitae",
+  },
+];
+---
+
+{
+  links.map((link) => (
+    <a
+      target="_blank"
+      href={link.href}
+      aria-label={link.ariaLabel}
+      class="text-[var(--white-icon)] hover:text-white transition duration-300 ease-in-out border border-1 border-[var(--white-icon-tr)] p-3 rounded-xl bg-[#1414149c] hover:bg-[var(--white-icon-tr)]"
+    >
+      <Fragment set:html={link.icon} />
+    </a>
+  ))
+}
+
+<style is:global>
+  a svg {
+    width: 24px;
+    height: 24px;
+  }
+</style>
