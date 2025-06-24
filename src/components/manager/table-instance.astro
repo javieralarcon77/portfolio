@@ -1,5 +1,6 @@
 ---
 import { IInstance } from '@/interfaces/projects.interface'
+import { ShowInstance } from '@/React/manager/components/ShowInstance'
 
 interface Props {
 	instances: IInstance[]
@@ -19,13 +20,6 @@ const { instances } = Astro.props
 						class="text-blue-gray-900 block font-sans text-sm font-normal leading-none antialiased opacity-70"
 					>
 						Instance
-					</p>
-				</th>
-				<th class="border-blue-gray-100 bg-blue-gray-50 border-b p-4">
-					<p
-						class="text-blue-gray-900 block font-sans text-sm font-normal leading-none antialiased opacity-70"
-					>
-						API Key
 					</p>
 				</th>
 				<th class="border-blue-gray-100 bg-blue-gray-50 border-b p-4">
@@ -62,11 +56,6 @@ const { instances } = Astro.props
 							</td>
 							<td class="border-blue-gray-50 border-b p-4">
 								<p class="text-blue-gray-900 block font-sans text-sm font-normal leading-normal antialiased">
-									{instance.apikey}
-								</p>
-							</td>
-							<td class="border-blue-gray-50 border-b p-4">
-								<p class="text-blue-gray-900 block font-sans text-sm font-normal leading-normal antialiased">
 									{instance.description}
 								</p>
 							</td>
@@ -76,12 +65,7 @@ const { instances } = Astro.props
 								</p>
 							</td>
 							<td class="border-blue-gray-50 border-b p-4">
-								<a
-									href="#"
-									class="text-blue-gray-900 block font-sans text-sm font-medium leading-normal antialiased"
-								>
-									Edit
-								</a>
+								<ShowInstance client:load instance={instance} />
 							</td>
 						</tr>
 					)
