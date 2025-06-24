@@ -71,6 +71,17 @@ const { instances } = Astro.props
 					)
 				})
 			}
+			{
+				instances.length === 0 && (
+					<tr>
+						<td colspan="4" class="border-blue-gray-50 border-b p-4">
+							<p class="text-blue-gray-900 block text-center font-sans text-sm font-normal leading-normal antialiased">
+								No hay instancias agregadas
+							</p>
+						</td>
+					</tr>
+				)
+			}
 		</tbody>
 	</table>
 </div>

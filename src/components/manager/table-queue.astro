@@ -86,6 +86,17 @@ const { queues } = Astro.props
 					)
 				})
 			}
+			{
+				queues.length === 0 && (
+					<tr>
+						<td colspan="5" class="border-blue-gray-50 border-b p-4">
+							<p class="text-blue-gray-900 block text-center font-sans text-sm font-normal leading-normal antialiased">
+								No hay colas agregadas
+							</p>
+						</td>
+					</tr>
+				)
+			}
 		</tbody>
 	</table>
 </div>
