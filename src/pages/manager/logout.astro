@@ -1,0 +1,8 @@
+---
+Astro.cookies.delete("auth", {
+  path: "/",
+  httpOnly: true,
+  sameSite: "lax",
+  secure: true,
+});
+return Astro.redirect("/manager", 302);
