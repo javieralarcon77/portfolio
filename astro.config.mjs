@@ -22,7 +22,7 @@ export default defineConfig({
   },
   server: {
     host: true,
-    port: 3000,
+    port: 4321,
   },
   adapter: node({
     mode: "standalone",
