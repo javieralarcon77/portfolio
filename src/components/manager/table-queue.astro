@@ -1,5 +1,6 @@
 ---
 import { IQueue } from '@/interfaces/projects.interface'
+import Label from './label.astro'
 
 interface Props {
 	queues: IQueue[]
@@ -71,9 +72,7 @@ const { queues } = Astro.props
 								</p>
 							</td>
 							<td class="border-blue-gray-50 border-b p-4">
-								<p class="text-blue-gray-900 block font-sans text-sm font-normal leading-normal antialiased">
-									{queue.status}
-								</p>
+								<Label text={queue.status} error={queue.status !== 'active'} />
 							</td>
 							<td class="border-blue-gray-50 border-b p-4">
 								<a

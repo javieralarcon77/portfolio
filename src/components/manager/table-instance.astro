@@ -2,6 +2,8 @@
 import { IInstance } from '@/interfaces/projects.interface'
 import { ShowInstance } from '@/React/manager/components/ShowInstance'
 
+import Label from './label.astro'
+
 interface Props {
 	instances: IInstance[]
 }
@@ -60,9 +62,7 @@ const { instances } = Astro.props
 								</p>
 							</td>
 							<td class="border-blue-gray-50 border-b p-4">
-								<p class="text-blue-gray-900 block font-sans text-sm font-normal leading-normal antialiased">
-									{instance.status}
-								</p>
+								<Label text={instance.status} error={instance.status !== 'active'} />
 							</td>
 							<td class="border-blue-gray-50 border-b p-4">
 								<ShowInstance client:load instance={instance} />

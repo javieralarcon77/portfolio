@@ -1,0 +1,15 @@
+---
+interface Props {
+	text: string
+	error?: boolean
+}
+
+const { text, error = false } = Astro.props
+---
+
+<span
+	class={'inline-flex items-center justify-center rounded-full px-2.5 py-0.5 ' +
+		(error ? 'bg-red-100 text-red-700' : 'bg-emerald-100 text-emerald-700')}
+>
+	<p class="whitespace-nowrap text-sm">{text}</p>
+</span>
