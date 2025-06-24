@@ -1,91 +1,87 @@
 ---
 const mainLinks = [
-  {
-    name: "Dashboard",
-    href: "/manager/dashboard",
-    icon: "/icons/home.svg",
-  },
-  {
-    name: "Proyectos",
-    href: "/manager/projects",
-    icon: "/icons/components.svg",
-  },
-  {
-    name: "Settings",
-    href: "/manager/settings",
-    icon: "/icons/settings.svg",
-  },
-];
+	{
+		name: 'Dashboard',
+		href: '/manager/dashboard',
+		icon: '/icons/home.svg'
+	},
+	{
+		name: 'Proyectos',
+		href: '/manager/projects',
+		icon: '/icons/components.svg'
+	},
+	{
+		name: 'Settings',
+		href: '/manager/settings',
+		icon: '/icons/settings.svg'
+	}
+]
 
 const links = [
-  {
-    name: "N8N",
-    href: "https://n8n.javidevelop.com",
-  },
-  {
-    name: "Evolution api",
-    href: "https://evolution.javidevelop.com/manager",
-  },
-  {
-    name: "Dokploy",
-    href: "https://dokploy.javidevelop.com",
-  },
-];
+	{
+		name: 'N8N',
+		href: 'https://n8n.javidevelop.com'
+	},
+	{
+		name: 'Evolution api',
+		href: 'https://evolution.javidevelop.com/manager'
+	},
+	{
+		name: 'Dokploy',
+		href: 'https://dokploy.javidevelop.com'
+	}
+]
 ---
 
 <div
-  class="w-1/2 md:w-1/3 lg:w-64 fixed md:top-0 md:left-0 h-screen lg:block border-r z-30 hidden"
-  id="main-nav"
+	class="fixed z-30 hidden h-screen w-1/2 border-r border-gray-600 md:left-0 md:top-0 md:w-1/3 lg:block lg:w-64"
+	id="main-nav"
 >
-  <div class="w-full h-20 border-b flex px-4 justify-center mb-8">
-    <img src="/logo-large-white.png" alt="logo" class="h-20 p-2" />
-  </div>
+	<div class="mb-8 flex h-20 w-full justify-center border-b border-gray-600 px-4">
+		<img src="/logo-large-white.png" alt="logo" class="h-20 p-2" />
+	</div>
 
-  <div class="mb-4 px-4">
-    <p class="pl-4 text-sm font-semibold mb-1 text-white">Main</p>
-    {
-      mainLinks.map((item) => {
-        const isActive = item.href === Astro.url.pathname;
+	<div class="mb-4 px-4">
+		<p class="mb-1 pl-4 text-sm font-semibold text-white">Main</p>
+		{
+			mainLinks.map((item) => {
+				const isActive = item.href === Astro.url.pathname
 
-        return (
-          <a
-            href={item.href}
-            class={
-              "w-full flex items-center h-10 pl-4 rounded-lg cursor-pointer hover:bg-gray-200 hover:text-gray-700" +
-              (isActive ? " bg-gray-200 text-gray-700" : " text-white")
-            }
-          >
-            <img
-              src={item.icon}
-              alt="icon"
-              class={isActive ? "mr-2" : "mr-2 filter brightness-0 invert"}
-            />
-            <span>{item.name}</span>
-          </a>
-        );
-      })
-    }
-  </div>
-  <div class="mb-4 px-4">
-    <p class="pl-4 text-sm font-semibold mb-1 text-white">Links</p>
-    {
-      links.map((item) => {
-        return (
-          <a
-            href={item.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="w-full flex items-center text-blue-400 h-10 pl-4 hover:bg-gray-200 rounded-lg cursor-pointer"
-          >
-            <img
-              src="/icons/link.svg"
-              alt="icon"
-              class="mr-2 filter brightness-0 invert"
-            />
-            <span class="text-white">{item.name}</span>
-          </a>
-        );
-      })
-    }
-  </div>
+				return (
+					<a
+						href={item.href}
+						class={
+							'flex h-10 w-full cursor-pointer items-center rounded-lg pl-4 hover:bg-gray-200 hover:text-gray-700' +
+							(isActive ? ' bg-gray-200 text-gray-700' : ' text-white')
+						}
+					>
+						<img
+							src={item.icon}
+							alt="icon"
+							class={isActive ? 'mr-2' : 'mr-2 brightness-0 invert filter'}
+						/>
+						<span>{item.name}</span>
+					</a>
+				)
+			})
+		}
+	</div>
+	<div class="mb-4 px-4">
+		<p class="mb-1 pl-4 text-sm font-semibold text-white">Links</p>
+		{
+			links.map((item) => {
+				return (
+					<a
+						href={item.href}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="flex h-10 w-full cursor-pointer items-center rounded-lg pl-4 text-blue-400 hover:bg-gray-200"
+					>
+						<img src="/icons/link.svg" alt="icon" class="mr-2 brightness-0 invert filter" />
+						<span class="text-white">{item.name}</span>
+					</a>
+				)
+			})
+		}
+	</div>
 </div>
