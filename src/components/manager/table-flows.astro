@@ -1,0 +1,68 @@
+---
+import Label from './label.astro'
+import { IFlow } from '@/interfaces/projects.interface'
+
+interface Props {
+	flows: IFlow[]
+}
+
+const { flows } = Astro.props
+---
+
+<div
+	class="relative flex h-full w-full flex-col overflow-auto rounded-xl bg-white bg-clip-border text-gray-700 shadow-md"
+>
+	<table class="w-full min-w-max table-auto text-left">
+		<thead>
+			<tr>
+				<th class="border-blue-gray-100 bg-blue-gray-50 border-b p-4">
+					<p
+						class="text-blue-gray-900 block font-sans text-sm font-normal leading-none antialiased opacity-70"
+					>
+						Name
+					</p>
+				</th>
+				<th class="border-blue-gray-100 bg-blue-gray-50 border-b p-4">
+					<p
+						class="text-blue-gray-900 block font-sans text-sm font-normal leading-none antialiased opacity-70"
+					>
+						Status
+					</p>
+				</th>
+				<th class="border-blue-gray-100 bg-blue-gray-50 border-b p-4">
+					<p
+						class="text-blue-gray-900 block font-sans text-sm font-normal leading-none antialiased opacity-70"
+					>
+					</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			{
+				flows.map((flow) => {
+					return (
+						<tr>
+							<td class="border-blue-gray-50 border-b p-4">
+								<p class="text-blue-gray-900 block font-sans text-sm font-normal leading-normal antialiased">
+									{flow.name}
+								</p>
+							</td>
+							<td class="border-blue-gray-50 border-b p-4">
+								<Label text={flow.active ? 'active' : 'inactive'} error={!flow.active} />
+							</td>
+							<td class="border-blue-gray-50 border-b p-4">
+								<a
+									href={flow.url}
+									target="_blank"
+									class="text-blue-gray-900 block font-sans text-sm font-medium leading-normal antialiased"
+								>
+									Ver
+								</a>
+							</td>
+						</tr>
+					)
+				})
+			}
+		</tbody>
+	</table>
+</div>

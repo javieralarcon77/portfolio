@@ -22,3 +22,10 @@ export interface IInstance {
 	description: string
 	status: string
 }
+
+export interface IFlow {
+	id: string
+	name: string
+	active: boolean
+	url: string
+}
