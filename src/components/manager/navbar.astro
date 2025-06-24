@@ -1,25 +1,21 @@
 <div class="sticky top-0 z-40" id="navbar">
-  <div class="w-full h-20 px-6 border-b flex items-center justify-between">
-    <!-- left navbar -->
-    <div class="flex">
-      <!-- mobile hamburger -->
-      <div class="inline-block lg:hidden flex items-center mr-4">
-        <button
-          class="hover:text-blue-500 hover:border-white focus:outline-none navbar-burger"
-          onclick="toggleSidebar()"
-        >
-          <svg
-            class="h-5 w-5"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-            ><title>Menu</title><path
-              d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path></svg
-          >
-        </button>
-      </div>
+	<div class="flex h-20 w-full items-center justify-between border-b px-6">
+		<!-- left navbar -->
+		<div class="flex">
+			<!-- mobile hamburger -->
+			<div class="mr-4 inline-block flex items-center lg:hidden">
+				<button
+					class="navbar-burger hover:border-white hover:text-blue-500 focus:outline-none"
+					onclick="toggleSidebar()"
+				>
+					<svg class="h-5 w-5" fill="#fff" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"
+						><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path></svg
+					>
+				</button>
+			</div>
 
-      <!-- search bar -->
-      <!--
+			<!-- search bar -->
+			<!--
       <div class="relative text-gray-600">
         <input
           type="search"
@@ -49,55 +45,53 @@
         </button>
       </div>
       -->
-    </div>
+		</div>
 
-    <!-- right navbar -->
-    <div class="flex items-center relative">
-      <div
-        class="w-12 h-12 rounded-full shadow-lg bg-white grid place-items-center"
-        onclick="toggleDropDown()"
-      >
-        <img src="/icons/user.svg" alt="user" />
-      </div>
-    </div>
-  </div>
+		<!-- right navbar -->
+		<div class="relative flex items-center">
+			<div
+				class="grid h-12 w-12 place-items-center rounded-full bg-white shadow-lg"
+				onclick="toggleDropDown()"
+			>
+				<img src="/icons/user.svg" alt="user" />
+			</div>
+		</div>
+	</div>
 
-  <!-- dropdown menu -->
-  <div
-    class="absolute bg-gray-100 border border-t-0 shadow-xl text-gray-700 rounded-b-lg w-48 right-0 mr-6 hidden"
-    id="dropDownMenu"
-  >
-    <a href="/manager/logout" class="block px-4 py-2 hover:bg-gray-200"
-      >Logout</a
-    >
-  </div>
-  <!-- dropdown menu end -->
+	<!-- dropdown menu -->
+	<div
+		class="absolute right-0 mr-6 hidden w-48 rounded-b-lg border border-t-0 bg-gray-100 text-gray-700 shadow-xl"
+		id="dropDownMenu"
+	>
+		<a href="/manager/logout" class="block px-4 py-2 hover:bg-gray-200">Logout</a>
+	</div>
+	<!-- dropdown menu end -->
 </div>
 
 <script is:inline>
-  function toggleSidebar() {
-    const sidebar = document.getElementById("main-nav");
-    const mainContent = document.getElementById("main-content");
-    const mainBody = document.getElementById("main-body");
-    const sidebarOpen = sidebar.classList.contains("hidden");
-    if (sidebarOpen) {
-      sidebar.classList.remove("hidden");
-      mainContent.classList.add("overlay");
-      mainBody.classList.add("overlay");
-    } else {
-      sidebar.classList.add("hidden");
-      mainContent.classList.remove("overlay");
-      mainBody.classList.remove("overlay");
-    }
-  }
+	function toggleSidebar() {
+		const sidebar = document.getElementById('main-nav')
+		const mainContent = document.getElementById('main-content')
+		const mainBody = document.getElementById('main-body')
+		const sidebarOpen = sidebar.classList.contains('hidden')
+		if (sidebarOpen) {
+			sidebar.classList.remove('hidden')
+			mainContent.classList.add('overlay')
+			mainBody.classList.add('overlay')
+		} else {
+			sidebar.classList.add('hidden')
+			mainContent.classList.remove('overlay')
+			mainBody.classList.remove('overlay')
+		}
+	}
 
-  function toggleDropDown() {
-    const dropDownMenu = document.getElementById("dropDownMenu");
-    const dropDownOpen = dropDownMenu.classList.contains("hidden");
-    if (dropDownOpen) {
-      dropDownMenu.classList.remove("hidden");
-    } else {
-      dropDownMenu.classList.add("hidden");
-    }
-  }
+	function toggleDropDown() {
+		const dropDownMenu = document.getElementById('dropDownMenu')
+		const dropDownOpen = dropDownMenu.classList.contains('hidden')
+		if (dropDownOpen) {
+			dropDownMenu.classList.remove('hidden')
+		} else {
+			dropDownMenu.classList.add('hidden')
+		}
+	}
 </script>
