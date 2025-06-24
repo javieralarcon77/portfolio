@@ -1,0 +1,92 @@
+---
+import { IQueue } from '@/interfaces/projects.interface'
+
+interface Props {
+	queues: IQueue[]
+}
+
+const { queues } = Astro.props
+---
+
+<div
+	class="relative flex h-full w-full flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md"
+>
+	<table class="w-full min-w-max table-auto text-left">
+		<thead>
+			<tr>
+				<th class="border-blue-gray-100 bg-blue-gray-50 border-b p-4">
+					<p
+						class="text-blue-gray-900 block font-sans text-sm font-normal leading-none antialiased opacity-70"
+					>
+						Name
+					</p>
+				</th>
+				<th class="border-blue-gray-100 bg-blue-gray-50 border-b p-4">
+					<p
+						class="text-blue-gray-900 block font-sans text-sm font-normal leading-none antialiased opacity-70"
+					>
+						Webhook
+					</p>
+				</th>
+				<th class="border-blue-gray-100 bg-blue-gray-50 border-b p-4">
+					<p
+						class="text-blue-gray-900 block font-sans text-sm font-normal leading-none antialiased opacity-70"
+					>
+						Sleep
+					</p>
+				</th>
+				<th class="border-blue-gray-100 bg-blue-gray-50 border-b p-4">
+					<p
+						class="text-blue-gray-900 block font-sans text-sm font-normal leading-none antialiased opacity-70"
+					>
+						Status
+					</p>
+				</th>
+				<th class="border-blue-gray-100 bg-blue-gray-50 border-b p-4">
+					<p
+						class="text-blue-gray-900 block font-sans text-sm font-normal leading-none antialiased opacity-70"
+					>
+					</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			{
+				queues.map((queue) => {
+					return (
+						<tr>
+							<td class="border-blue-gray-50 border-b p-4">
+								<p class="text-blue-gray-900 block font-sans text-sm font-normal leading-normal antialiased">
+									{queue.name}
+								</p>
+							</td>
+							<td class="border-blue-gray-50 border-b p-4">
+								<p class="text-blue-gray-900 block font-sans text-sm font-normal leading-normal antialiased">
+									{queue.webhook}
+								</p>
+							</td>
+							<td class="border-blue-gray-50 border-b p-4">
+								<p class="text-blue-gray-900 block font-sans text-sm font-normal leading-normal antialiased">
+									{queue.sleep}
+								</p>
+							</td>
+							<td class="border-blue-gray-50 border-b p-4">
+								<p class="text-blue-gray-900 block font-sans text-sm font-normal leading-normal antialiased">
+									{queue.status}
+								</p>
+							</td>
+							<td class="border-blue-gray-50 border-b p-4">
+								<a
+									href="#"
+									class="text-blue-gray-900 block font-sans text-sm font-medium leading-normal antialiased"
+								>
+									Edit
+								</a>
+							</td>
+						</tr>
+					)
+				})
+			}
+		</tbody>
+	</table>
+</div>

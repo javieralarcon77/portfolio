@@ -1,0 +1,92 @@
+---
+import { IInstance } from '@/interfaces/projects.interface'
+
+interface Props {
+	instances: IInstance[]
+}
+
+const { instances } = Astro.props
+---
+
+<div
+	class="relative flex h-full w-full flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md"
+>
+	<table class="w-full min-w-max table-auto text-left">
+		<thead>
+			<tr>
+				<th class="border-blue-gray-100 bg-blue-gray-50 border-b p-4">
+					<p
+						class="text-blue-gray-900 block font-sans text-sm font-normal leading-none antialiased opacity-70"
+					>
+						Name
+					</p>
+				</th>
+				<th class="border-blue-gray-100 bg-blue-gray-50 border-b p-4">
+					<p
+						class="text-blue-gray-900 block font-sans text-sm font-normal leading-none antialiased opacity-70"
+					>
+						API Key
+					</p>
+				</th>
+				<th class="border-blue-gray-100 bg-blue-gray-50 border-b p-4">
+					<p
+						class="text-blue-gray-900 block font-sans text-sm font-normal leading-none antialiased opacity-70"
+					>
+						Descripción
+					</p>
+				</th>
+				<th class="border-blue-gray-100 bg-blue-gray-50 border-b p-4">
+					<p
+						class="text-blue-gray-900 block font-sans text-sm font-normal leading-none antialiased opacity-70"
+					>
+						Status
+					</p>
+				</th>
+				<th class="border-blue-gray-100 bg-blue-gray-50 border-b p-4">
+					<p
+						class="text-blue-gray-900 block font-sans text-sm font-normal leading-none antialiased opacity-70"
+					>
+					</p>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			{
+				instances.map((instance) => {
+					return (
+						<tr>
+							<td class="border-blue-gray-50 border-b p-4">
+								<p class="text-blue-gray-900 block font-sans text-sm font-normal leading-normal antialiased">
+									{instance.name}
+								</p>
+							</td>
+							<td class="border-blue-gray-50 border-b p-4">
+								<p class="text-blue-gray-900 block font-sans text-sm font-normal leading-normal antialiased">
+									{instance.apiKey}
+								</p>
+							</td>
+							<td class="border-blue-gray-50 border-b p-4">
+								<p class="text-blue-gray-900 block font-sans text-sm font-normal leading-normal antialiased">
+									{instance.description}
+								</p>
+							</td>
+							<td class="border-blue-gray-50 border-b p-4">
+								<p class="text-blue-gray-900 block font-sans text-sm font-normal leading-normal antialiased">
+									{instance.status}
+								</p>
+							</td>
+							<td class="border-blue-gray-50 border-b p-4">
+								<a
+									href="#"
+									class="text-blue-gray-900 block font-sans text-sm font-medium leading-normal antialiased"
+								>
+									Edit
+								</a>
+							</td>
+						</tr>
+					)
+				})
+			}
+		</tbody>
+	</table>
+</div>
