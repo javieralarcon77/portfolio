@@ -3,18 +3,22 @@ export interface IProject {
 	slug: string
 	description: string
 	status: string
+	queue: IQueue[]
+	instance: IInstance[]
 }
 
 export interface IQueue {
-	name: string
+	id: string
+	queue: string
 	webhook: string
-	sleep: 15
+	sleep: number
 	status: string
 }
 
 export interface IInstance {
-	name: string
-	apiKey: string
+	id: string
+	instance: string
+	apikey: string
 	description: string
 	status: string
 }

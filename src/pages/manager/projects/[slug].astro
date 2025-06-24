@@ -2,33 +2,14 @@
 import LayoutAdmin from '@/layouts/layout-admin.astro'
 import TableQueues from '@/components/manager/table-queue.astro'
 import TableInstance from '@/components/manager/table-instance.astro'
-import { IInstance, IQueue } from '@/interfaces/projects.interface'
+import { getProject } from '@/services/projects.services'
 
 const { slug } = Astro.params
 
-const instances: IInstance[] = [
-	{
-		name: 'Instance 1',
-		apiKey: '1234567890',
-		description: 'Instance 1',
-		status: 'Active'
-	}
-]
-
-const queues: IQueue[] = [
-	{
-		name: 'Queue 1',
-		webhook: 'https://webhook.com',
-		sleep: 15,
-		status: 'Active'
-	},
-	{
-		name: 'Queue 2',
-		webhook: 'https://webhook.com',
-		sleep: 15,
-		status: 'Active'
-	}
-]
+const project = await getProject(slug)
+if (!project) {
+	return Astro.redirect('/manager/projects')
+}
 ---
 
 <LayoutAdmin title="Proyectos">
@@ -37,11 +18,11 @@ const queues: IQueue[] = [
 		<hr class="my-4" />
 		<div class="mb-4">
 			<h3 class="mb-4 text-xl font-semibold">Colas</h3>
-			<TableQueues queues={queues} />
+			<TableQueues queues={project.queue} />
 		</div>
 		<div class="mb-4">
 			<h3 class="mb-4 text-xl font-semibold">Instancias</h3>
-			<TableInstance instances={instances} />
+			<TableInstance instances={project.instance} />
 		</div>
 	</div>
 </LayoutAdmin>

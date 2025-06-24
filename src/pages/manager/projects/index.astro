@@ -1,27 +1,24 @@
 ---
-import LayoutAdmin from "@/layouts/layout-admin.astro";
-import ItemProjects from "@/components/manager/item-projects.astro";
+import LayoutAdmin from '@/layouts/layout-admin.astro'
+import ItemProjects from '@/components/manager/item-projects.astro'
+import { getProjects } from '@/services/projects.services'
+
+const projects = await getProjects()
 ---
 
 <LayoutAdmin title="Proyectos">
-  <div class="p-4">
-    <h1>Proyectos</h1>
-    <div class="flex flex-wrap justify-between">
-      <ItemProjects
-        title="Proyecto 1"
-        description="Descripción del proyecto 1"
-        slug="proyecto-1"
-      />
-      <ItemProjects
-        title="Proyecto 2"
-        description="Descripción del proyecto 2"
-        slug="proyecto-2"
-      />
-      <ItemProjects
-        title="Proyecto 3"
-        description="Descripción del proyecto 3"
-        slug="proyecto-3"
-      />
-    </div>
-  </div>
+	<div class="p-4">
+		<h1>Proyectos</h1>
+		<div class="flex flex-wrap justify-between">
+			{
+				projects.map((project) => (
+					<ItemProjects
+						title={project.name}
+						description={project.description}
+						slug={project.slug}
+					/>
+				))
+			}
+		</div>
+	</div>
 </LayoutAdmin>
