@@ -44,3 +44,60 @@ export const getExecutionsCount = async (tag: string) => {
 	}
 	return { count: 0, executions: [] }
 }
+
+export const getInstanceStatus = async (instance: string) => {
+	try {
+		const resp = await fetch(`${apiUrl}/instance/status`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({ instance: instance })
+		})
+		const data = await resp.json()
+		if (data.result) {
+			return data
+		}
+	} catch (error) {
+		console.log(error)
+	}
+	return { result: false, message: 'Algo salio mal' }
+}
+
+export const getInstanceQr = async (instance: string) => {
+	try {
+		const resp = await fetch(`${apiUrl}/instance/qr`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({ instance: instance })
+		})
+		const data = await resp.json()
+		if (data.result) {
+			return data
+		}
+	} catch (error) {
+		console.log(error)
+	}
+	return { result: false, message: 'Algo salio mal' }
+}
+
+export const deleteInstance = async (instance: string) => {
+	try {
+		const resp = await fetch(`${apiUrl}/instance/delete`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({ instance: instance })
+		})
+		const data = await resp.json()
+		if (data.result) {
+			return data
+		}
+	} catch (error) {
+		console.log(error)
+	}
+	return { result: false, message: 'Algo salio mal' }
+}

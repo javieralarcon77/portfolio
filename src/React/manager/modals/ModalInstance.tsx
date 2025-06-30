@@ -2,38 +2,24 @@ import { useEffect, useState } from 'react'
 import { IInstance } from '@/interfaces/projects.interface'
 import { ModalTemplate } from '../templates/ModalTemplate'
 
-const API_URL = import.meta.env.PUBLIC_API_URL
-
 interface IProps {
 	instance: IInstance
 	closeModal: () => void
 }
 
 export const ModalInstance = ({ instance, closeModal }: IProps) => {
-	const [status, setStatus] = useState('Loading...')
+	const [data, setData] = useState({ status: 'Loading...', number: '' })
 	const [qr, setQr] = useState('')
 
 	useEffect(() => {
 		const getStatus = async () => {
-			const response = await fetch(`${API_URL}/instance/status`, {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify({ instance: instance.instance })
-			})
+			const response = await fetch(`/api/projects/instance/status?instance=${instance.instance}`)
 			const data = await response.json()
-			setStatus(data.status)
+			setData(data.data)
 		}
 
 		const getQr = async () => {
-			const response = await fetch(`${API_URL}/instance/qr`, {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json'
-				},
-				body: JSON.stringify({ instance: instance.instance })
-			})
+			const response = await fetch(`/api/projects/instance/qr?instance=${instance.instance}`)
 			const data = await response.json()
 			setQr(data.qr)
 		}
@@ -42,13 +28,7 @@ export const ModalInstance = ({ instance, closeModal }: IProps) => {
 	}, [instance])
 
 	const deleteInstance = async () => {
-		const response = await fetch(`${API_URL}/instance/delete`, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({ instance: instance.instance })
-		})
+		const response = await fetch(`/api/projects/instance-delete?instance=${instance.instance}`)
 		const data = await response.json()
 		if (data.result) {
 			window.location.reload()
@@ -78,8 +58,9 @@ export const ModalInstance = ({ instance, closeModal }: IProps) => {
 				</div>
 				<div className="mt-4">
 					<label className="block text-sm font-medium text-gray-700">
-						Status <span className="text-gray-500">({status})</span>
+						Status <span className="text-gray-500">({data.status})</span>
 					</label>
+					<p className="text-pretty text-gray-700">{data.number}</p>
 				</div>
 				{qr && <img src={qr} alt="QR" width="100%" />}
 			</>
