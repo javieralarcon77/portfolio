@@ -36,9 +36,7 @@ export const getExecutionsCount = async (tag: string) => {
 			body: JSON.stringify({ tag: tag })
 		})
 		const data = await resp.json()
-		if (data.result) {
-			return data
-		}
+		return data
 	} catch (error) {
 		console.log(error)
 	}
@@ -55,9 +53,7 @@ export const getInstanceStatus = async (instance: string) => {
 			body: JSON.stringify({ instance: instance })
 		})
 		const data = await resp.json()
-		if (data.result) {
-			return data
-		}
+		return data
 	} catch (error) {
 		console.log(error)
 	}
@@ -74,9 +70,7 @@ export const getInstanceQr = async (instance: string) => {
 			body: JSON.stringify({ instance: instance })
 		})
 		const data = await resp.json()
-		if (data.result) {
-			return data
-		}
+		return data
 	} catch (error) {
 		console.log(error)
 	}

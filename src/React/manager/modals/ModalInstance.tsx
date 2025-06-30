@@ -15,13 +15,17 @@ export const ModalInstance = ({ instance, closeModal }: IProps) => {
 		const getStatus = async () => {
 			const response = await fetch(`/api/projects/instance/status?instance=${instance.instance}`)
 			const data = await response.json()
+			if (!data.result) {
+				setData({ status: 'Error', number: '' })
+				return
+			}
 			setData(data.data)
 		}
 
 		const getQr = async () => {
 			const response = await fetch(`/api/projects/instance/qr?instance=${instance.instance}`)
 			const data = await response.json()
-			setQr(data.qr)
+			if (data.result) setQr(data.qr)
 		}
 		getStatus()
 		getQr()

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { ModalExecutions } from '../modals/ModalExecutions'
 
 export const CountExecutions = ({ tag }: { tag: string }) => {
-	const [count, setCount] = useState()
+	const [count, setCount] = useState(null)
 	const [executions, setExecutions] = useState([])
 	const [open, setOpen] = useState(false)
 
@@ -10,6 +10,10 @@ export const CountExecutions = ({ tag }: { tag: string }) => {
 		const getExecutions = async () => {
 			const data = await fetch(`/api/projects/executions/count?tag=${tag}`)
 			const dataJson = await data.json()
+			if (!dataJson.result) {
+				setCount('Error')
+				return
+			}
 			setExecutions(dataJson.executions)
 			setCount(dataJson.count)
 		}
