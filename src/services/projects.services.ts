@@ -4,7 +4,9 @@ export const getProjects = async () => {
 	try {
 		const resp = await fetch(`${apiUrl}/projects`)
 		const data = await resp.json()
-		return data.projects
+		if (data.result) {
+			return data.projects
+		}
 	} catch (error) {
 		console.log(error)
 	}
@@ -15,9 +17,30 @@ export const getProject = async (slug: string) => {
 	try {
 		const resp = await fetch(`${apiUrl}/project/${slug}`)
 		const data = await resp.json()
-		return data.project
+		if (data.result) {
+			return data.project
+		}
 	} catch (error) {
 		console.log(error)
 	}
 	return null
+}
+
+export const getExecutionsCount = async (tag: string) => {
+	try {
+		const resp = await fetch(`${apiUrl}/executions/count`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({ tag: tag })
+		})
+		const data = await resp.json()
+		if (data.result) {
+			return data
+		}
+	} catch (error) {
+		console.log(error)
+	}
+	return { count: 0, executions: [] }
 }

@@ -1,0 +1,13 @@
+---
+import { CountExecutions } from '@/React/manager/components/CountExecutions'
+
+interface Props {
+	project: any
+}
+
+const { project } = Astro.props
+---
+
+<div class="-m-4 flex flex-wrap text-center">
+	<CountExecutions client:idle tag={project.tag} />
+</div>

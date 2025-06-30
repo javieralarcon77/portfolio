@@ -4,6 +4,7 @@ import ItemProjects from '@/components/manager/item-projects.astro'
 import { getProjects } from '@/services/projects.services'
 
 const projects = await getProjects()
+console.log(projects)
 ---
 
 <LayoutAdmin title="Proyectos">

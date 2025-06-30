@@ -3,6 +3,7 @@ import LayoutAdmin from '@/layouts/layout-admin.astro'
 import TableQueues from '@/components/manager/table-queue.astro'
 import TableInstance from '@/components/manager/table-instance.astro'
 import TableFlows from '@/components/manager/table-flows.astro'
+import Stats from '@/components/manager/stats.astro'
 import { getProject } from '@/services/projects.services'
 import { AddInstance } from '@/React/manager/components/AddInstance'
 
@@ -19,6 +20,9 @@ if (!project) {
 		<h1 class="text-2xl font-bold">Proyecto {project.name}</h1>
 		<p>{project.description}</p>
 		<hr class="my-4" />
+		<div class="mb-4">
+			<Stats project={project} />
+		</div>
 		<div class="mb-4">
 			<div class="mb-4 flex items-center justify-between">
 				<h3 class="text-xl font-semibold">Colas</h3>
