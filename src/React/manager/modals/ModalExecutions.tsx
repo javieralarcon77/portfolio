@@ -26,8 +26,8 @@ export const ModalExecutions = ({ executions, closeModal }: IProps) => {
 						{executions.map((execution: any) => (
 							<tr key={execution.name}>
 								<td className="px-4 py-2 text-black">{execution.name}</td>
-								<td className="px-4 py-2 text-green-500">{execution.success}</td>
-								<td className="px-4 py-2 text-red-500">{execution.error}</td>
+								<td className="px-4 py-2 text-green-500">{execution.success || 0}</td>
+								<td className="px-4 py-2 text-red-500">{execution.error || 0}</td>
 							</tr>
 						))}
 					</tbody>
