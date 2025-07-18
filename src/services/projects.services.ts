@@ -2,7 +2,7 @@ const apiUrl = import.meta.env.API_URL
 
 export const getProjects = async () => {
 	try {
-		const resp = await fetch(`${apiUrl}/projects`)
+		const resp = await fetch(`${apiUrl}/project`)
 		const data = await resp.json()
 		if (data.result) {
 			return data.projects
@@ -28,7 +28,7 @@ export const getProject = async (slug: string) => {
 
 export const getExecutionsCount = async (tag: string) => {
 	try {
-		const resp = await fetch(`${apiUrl}/executions/count`, {
+		const resp = await fetch(`${apiUrl}/n8n/executions/count`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
