@@ -1,28 +1,31 @@
 {
-  "name": "portfolio",
-  "type": "module",
-  "version": "0.0.1",
-  "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro",
-    "start": "node dist/server/entry.mjs"
-  },
-  "dependencies": {
-    "@astrojs/node": "^9.2.2",
-    "@astrojs/react": "^4.3.0",
-    "@astrojs/tailwind": "^6.0.2",
-    "@types/react": "^19.1.6",
-    "@types/react-dom": "^19.1.6",
-    "astro": "^5.9.1",
-    "express": "^5.1.0",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
-  },
-  "devDependencies": {
-    "prettier": "^3.6.0",
-    "prettier-plugin-astro": "^0.14.1",
-    "prettier-plugin-tailwindcss": "^0.6.13"
-  }
+	"name": "portfolio",
+	"type": "module",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "astro dev",
+		"build": "astro build",
+		"preview": "astro preview",
+		"astro": "astro",
+		"start": "node dist/server/entry.mjs"
+	},
+	"dependencies": {
+		"@astrojs/node": "^9.2.2",
+		"@astrojs/react": "^4.3.0",
+		"@astrojs/tailwind": "^6.0.2",
+		"@types/react": "^19.1.6",
+		"@types/react-dom": "^19.1.6",
+		"astro": "^5.9.1",
+		"express": "^5.1.0",
+		"react": "^19.1.0",
+		"react-dom": "^19.1.0"
+	},
+	"devDependencies": {
+		"prettier": "^3.6.0",
+		"prettier-plugin-astro": "^0.14.1",
+		"prettier-plugin-tailwindcss": "^0.6.13"
+	},
+	"engines": {
+		"node": "22"
+	}
 }
