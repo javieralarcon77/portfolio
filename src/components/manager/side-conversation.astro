@@ -1,0 +1,39 @@
+---
+import { getConversations } from '@/services/projects.services'
+
+interface Props {
+	table: string
+	id?: string
+}
+
+const { table, id } = Astro.props
+
+const conversations = await getConversations(table)
+---
+
+<div
+	class="col-span-4 flex flex-col border-r border-gray-700"
+	style="max-height: calc(100vh - 80px)"
+>
+	<div class="border-b border-gray-700 p-4">
+		<h2 class="text-lg font-semibold">Conversations</h2>
+	</div>
+	<ul class="flex-grow overflow-y-auto">
+		{
+			conversations.map((conversation) => {
+				const isActive = id === conversation.session_id
+
+				return (
+					<li
+						class={`cursor-pointer border-b border-gray-700 p-4 hover:bg-gray-800 ${isActive ? 'bg-gray-800' : ''}`}
+					>
+						<a href={`/manager/conversations/${table}/${conversation.session_id}`}>
+							<p class="font-semibold">{conversation.session_id}</p>
+							<p class="text-sm text-gray-400">{conversation.count}</p>
+						</a>
+					</li>
+				)
+			})
+		}
+	</ul>
+</div>

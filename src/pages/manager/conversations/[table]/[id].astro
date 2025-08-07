@@ -1,0 +1,15 @@
+---
+import LayoutAdmin from '@/layouts/layout-admin.astro'
+import SideConversation from '@/components/manager/side-conversation.astro'
+import Chat from '@/components/manager/chat.astro'
+const { table, id } = Astro.params
+---
+
+<LayoutAdmin title={`Conversaciones ${table}`} classMain="p-0">
+	<div class="grid grid-cols-12 bg-gray-900 text-white" style="max-height: calc(100vh - 80px)">
+		<SideConversation table={table} id={id} />
+		<div class="col-span-8 flex flex-col" style="max-height: calc(100vh - 80px)">
+			<Chat id={id} table={table} />
+		</div>
+	</div>
+</LayoutAdmin>

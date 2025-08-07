@@ -6,6 +6,7 @@ import TableFlows from '@/components/manager/table-flows.astro'
 import Stats from '@/components/manager/stats.astro'
 import { getProject } from '@/services/projects.services'
 import { AddInstance } from '@/React/manager/components/AddInstance'
+import TableConversations from '@/components/manager/table-conversations.astro'
 
 const { slug } = Astro.params
 
@@ -51,5 +52,11 @@ if (!project) {
 				</div>
 			)
 		}
+		<div class="mb-4">
+			<div class="mb-4 flex items-center justify-between">
+				<h3 class="text-xl font-semibold">Conversaciones</h3>
+			</div>
+			<TableConversations slug={project.slug} />
+		</div>
 	</div>
 </LayoutAdmin>

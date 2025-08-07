@@ -95,3 +95,29 @@ export const deleteInstance = async (instance: string) => {
 	}
 	return { result: false, message: 'Algo salio mal' }
 }
+
+export const getConversations = async (table: string) => {
+	try {
+		const resp = await fetch(`${apiUrl}/chats/conversations/?table=${table}`)
+		const data = await resp.json()
+		if (data.result) {
+			return data.conversations
+		}
+	} catch (error) {
+		console.log(error)
+	}
+	return []
+}
+
+export const getMessages = async (table: string, sessionId: string) => {
+	try {
+		const resp = await fetch(`${apiUrl}/chats/messages/?table=${table}&sessionId=${sessionId}`)
+		const data = await resp.json()
+		if (data.result) {
+			return data.messages
+		}
+	} catch (error) {
+		console.log(error)
+	}
+	return []
+}
