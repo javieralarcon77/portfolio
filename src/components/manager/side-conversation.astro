@@ -9,6 +9,19 @@ interface Props {
 const { table, id } = Astro.props
 
 const conversations = await getConversations(table)
+
+const formatDate = (date: string) => {
+	const newDate = new Date(date)
+	return newDate.toLocaleTimeString('es-ES', {
+		timeZone: 'America/Bogota',
+		month: 'short',
+		day: 'numeric',
+		year: 'numeric',
+		hour: '2-digit',
+		minute: '2-digit',
+		second: '2-digit'
+	})
+}
 ---
 
 <div
@@ -22,7 +35,7 @@ const conversations = await getConversations(table)
 		{
 			conversations.map((conversation) => {
 				const isActive = id === conversation.session_id
-				const date = new Date(conversation.max).toLocaleString()
+				const date = formatDate(conversation.max)
 
 				return (
 					<li
