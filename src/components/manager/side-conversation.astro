@@ -22,6 +22,7 @@ const conversations = await getConversations(table)
 		{
 			conversations.map((conversation) => {
 				const isActive = id === conversation.session_id
+				const date = new Date(conversation.max).toLocaleString()
 
 				return (
 					<li
@@ -29,7 +30,7 @@ const conversations = await getConversations(table)
 					>
 						<a href={`/manager/conversations/${table}/${conversation.session_id}`}>
 							<p class="font-semibold">{conversation.session_id}</p>
-							<p class="text-sm text-gray-400">{conversation.count}</p>
+							<p class="text-sm text-gray-400">{date}</p>
 						</a>
 					</li>
 				)
