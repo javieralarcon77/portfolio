@@ -28,7 +28,7 @@ const sendAsesor = messages.find(
 
 <div class="flex items-end border-b border-gray-700 bg-gray-800 p-4">
 	<img class="mr-4 h-10 w-10 rounded-full" src="/logo-black.png" alt="Avatar" />
-	<h2 class="text-lg font-semibold">{id}</h2>
+	<h2 class="text-lg font-semibold">{id.replace(/_telefonos/g, ' ')}</h2>
 	{sendAsesor && <p class="ml-2 text-sm text-gray-400">Pasado al asesor</p>}
 </div>
 <div class="flex-grow overflow-y-auto bg-gray-800 p-4">

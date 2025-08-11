@@ -42,7 +42,12 @@ const formatDate = (date: string) => {
 						class={`cursor-pointer border-b border-gray-700 p-4 hover:bg-gray-800 ${isActive ? 'bg-gray-800' : ''}`}
 					>
 						<a href={`/manager/conversations/${table}/${conversation.session_id}`}>
-							<p class="font-semibold">{conversation.session_id}</p>
+							<div class="tags">
+								{conversation.tiene_asesor && (
+									<span class="rounded bg-blue-500 px-2 py-1 text-xs text-white">Asesor</span>
+								)}
+							</div>
+							<p class="font-semibold">{conversation.session_id.replace(/_telefonos/g, ' ')}</p>
 							<p class="text-sm text-gray-400">{date}</p>
 						</a>
 					</li>
