@@ -7,8 +7,8 @@ const { table, id } = Astro.params
 
 <LayoutAdmin title={`Conversaciones ${table}`} classMain="p-0">
 	<div class="grid grid-cols-12 bg-gray-900 text-white" style="max-height: calc(100vh - 80px)">
-		<SideConversation table={table} id={id} />
-		<div class="col-span-8 flex flex-col" style="max-height: calc(100vh - 80px)">
+		<SideConversation table={table} id={id} className="hidden md:col-span-4 md:flex" />
+		<div class="col-span-12 flex flex-col md:col-span-8" style="max-height: calc(100vh - 80px)">
 			<Chat id={id} table={table} />
 		</div>
 	</div>

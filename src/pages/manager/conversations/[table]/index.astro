@@ -6,7 +6,6 @@ const { table } = Astro.params
 
 <LayoutAdmin title={`Conversaciones ${table}`} classMain="p-0">
 	<div class="grid grid-cols-12 bg-gray-900 text-white" style="max-height: calc(100vh - 80px)">
-		<SideConversation table={table} />
-		<div class="col-span-8 flex h-full flex-col"></div>
+		<SideConversation table={table} className="col-span-12 flex md:col-span-4" />
 	</div>
 </LayoutAdmin>
