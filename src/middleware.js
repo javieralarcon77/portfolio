@@ -12,7 +12,7 @@ export const onRequest = (async (context, next) => {
   }
 
   if (!auth) {
-    return context.redirect("/manager");
+    return context.redirect("/");
   }
   return next();
 });
